@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "allowJs": true,
+        "target": "esnext",
+        "moduleResolution": "node",
+        "module": "esnext",
+        "strict": true
+    },
+    "extends": "expo/tsconfig.base"
+}
