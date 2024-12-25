@@ -1,11 +1,20 @@
 {
-    "compilerOptions": {
-        "jsx": "react",
-        "allowJs": true,
-        "target": "esnext",
-        "moduleResolution": "node",
-        "module": "esnext",
-        "strict": true
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
     },
-    "extends": "expo/tsconfig.base"
+    "jsx": "react",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["redux-persist"]
+  },
+  "extends": "expo/tsconfig.base"
 }

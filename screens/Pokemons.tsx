@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, ListRenderItemInfo, StyleSheet } from "react-native";
+import { useAppDispatch, useAppSelector } from "@/store/redux/hook";
+import { getPokemons } from "@/store/redux/slices/pokemons";
 import PokemonCard from "../components/PokemonCard";
 import { POKEMONS } from "../data/dummy-data";
+import { RootState } from "@/store/redux";
 
 interface IPokemon {
     id: number;
@@ -16,6 +19,14 @@ interface PokemonsScreenProps {
 }
 
 const PokemonsScreen: React.FC<PokemonsScreenProps> = ({ navigation }) => {
+    // Get dispatch and state from Redux
+    const dispatch = useAppDispatch();
+    const { pokemons, loading } = useAppSelector((state: RootState) => state.pokemonsReducer);
+    // Fetch pokemons when the component mounts
+    useEffect(() => {
+        dispatch(getPokemons()); // Dispatch the action to fetch pokemons
+    }, [dispatch]);
+
     function renderPokemonItem(itemData: ListRenderItemInfo<IPokemon>) {
         function pressHandler() {
             navigation.navigate("PokemonDetail", {
@@ -28,8 +39,8 @@ const PokemonsScreen: React.FC<PokemonsScreenProps> = ({ navigation }) => {
 
     return (
         <FlatList
-            data={POKEMONS}
-            keyExtractor={(item) => item.id.toString()}
+            data={pokemons}
+            keyExtractor={(item, index) => index.toString()}
             renderItem={renderPokemonItem}
             numColumns={2}
         />

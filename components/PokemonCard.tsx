@@ -17,7 +17,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ title, url, onPress }) => {
             >
                 <View style={styles.innerContainer}>
                     <View>
-                        <Image source={{ uri: url }} style={styles.image} />
+                        <Image
+                            source={{ uri: `https://img.pokemondb.net/artwork/${title}.jpg` }}
+                            style={styles.image}
+                            resizeMode="contain"
+                        />
                         <Text style={styles.title}>{title}</Text>
                     </View>
                 </View>
@@ -47,6 +51,7 @@ const styles = StyleSheet.create({
     innerContainer: {
         borderRadius: 8,
         overflow: "hidden",
+        paddingHorizontal: 8,
     },
     image: {
         width: "100%",

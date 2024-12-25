@@ -21,7 +21,11 @@ const PokemonDetailScreen: React.FC<PokemonsScreenProps> = ({ route }) => {
         <View style={styles.mealItem}>
             <View style={styles.innerContainer}>
                 <View>
-                    <Image source={{ uri: pokemon.url }} style={styles.image} />
+                    <Image
+                        source={{ uri: `https://img.pokemondb.net/artwork/${pokemon.name}.jpg` }}
+                        style={styles.image}
+                        resizeMode="contain"
+                    />
                     <Text style={styles.title}>{pokemon.name}</Text>
                 </View>
                 <View style={styles.details}>
@@ -53,6 +57,7 @@ const styles = StyleSheet.create({
     innerContainer: {
         borderRadius: 8,
         overflow: "hidden",
+        paddingVertical: 16
     },
     image: {
         width: "100%",
