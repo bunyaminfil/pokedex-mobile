@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
-import { FlatList, ListRenderItemInfo, StyleSheet } from "react-native";
+import { FlatList, ListRenderItemInfo, StyleSheet, View } from "react-native";
 import { useAppDispatch, useAppSelector } from "@/store/redux/hook";
 import { getPokemons } from "@/store/redux/slices/pokemons";
-import PokemonCard from "../components/PokemonCard";
+import PokemonCard from "../components/Cards/PokemonCard";
 import { POKEMONS } from "../data/dummy-data";
 import { RootState } from "@/store/redux";
+import Header from "@/components/ui/Header";
+import { BlueBackArrow, Menu } from "@/components/icons";
 
 interface IPokemon {
     id: number;

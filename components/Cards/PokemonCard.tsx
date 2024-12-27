@@ -19,6 +19,11 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ title, url, onPress }) => {
                     <View>
                         <Image
                             source={{ uri: `https://img.pokemondb.net/artwork/${title}.jpg` }}
+                            // source={
+                            //     title === "gamzius"
+                            //         ? require("@/assets/pk.jpg") // Use require directly for local images
+                            //         : { uri: `https://img.pokemondb.net/artwork/${title}.jpg` } // Use uri for remote images
+                            // }
                             style={styles.image}
                             resizeMode="contain"
                         />

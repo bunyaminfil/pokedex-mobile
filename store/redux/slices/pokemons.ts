@@ -11,7 +11,12 @@ const initialState: InitStatePokemon = {
 export const getPokemons = createAsyncThunk("pokemons/getPokemons", async (_, { rejectWithValue }) => {
     try {
         const response: IPokemons = await axiosInstance.get(`pokemon`);
+        const customPokemon = {
+            name: "gamzius",
+            url: "",
+        };
         return response.results;
+        // return [...response.results, customPokemon]; // Append the custom object to the results
     } catch (error: any) {
         return error.response;
     }

@@ -22,6 +22,11 @@ const PokemonDetailScreen: React.FC<PokemonsScreenProps> = ({ route }) => {
             <View style={styles.innerContainer}>
                 <View>
                     <Image
+                        // source={
+                        //     pokemon.name === "gamzius"
+                        //         ? require("@/assets/pk.jpg") // Use require directly for local images
+                        //         : { uri: `https://img.pokemondb.net/artwork/${pokemon.name}.jpg` } // Use uri for remote images
+                        // }
                         source={{ uri: `https://img.pokemondb.net/artwork/${pokemon.name}.jpg` }}
                         style={styles.image}
                         resizeMode="contain"
@@ -57,7 +62,7 @@ const styles = StyleSheet.create({
     innerContainer: {
         borderRadius: 8,
         overflow: "hidden",
-        paddingVertical: 16
+        paddingVertical: 16,
     },
     image: {
         width: "100%",
