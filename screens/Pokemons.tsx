@@ -3,10 +3,10 @@ import { FlatList, ListRenderItemInfo, StyleSheet, View } from "react-native";
 import { useAppDispatch, useAppSelector } from "@/store/redux/hook";
 import { getPokemons } from "@/store/redux/slices/pokemons";
 import PokemonCard from "../components/Cards/PokemonCard";
-import { POKEMONS } from "../data/dummy-data";
 import { RootState } from "@/store/redux";
-import Header from "@/components/ui/Header";
-import { BlueBackArrow, Menu } from "@/components/icons";
+import { LoadingTypes } from "@/types/loadingTypes";
+import LoadingOverlay from "@/components/ui/LoadingOverlay";
+import ErrorOverlay from "@/components/ui/ErrorOverlay";
 
 interface IPokemon {
     id: number;
@@ -23,7 +23,7 @@ interface PokemonsScreenProps {
 const PokemonsScreen: React.FC<PokemonsScreenProps> = ({ navigation }) => {
     // Get dispatch and state from Redux
     const dispatch = useAppDispatch();
-    const { pokemons, loading } = useAppSelector((state: RootState) => state.pokemonsReducer);
+    const { pokemons, loading, error } = useAppSelector((state: RootState) => state.pokemonsReducer);
     // Fetch pokemons when the component mounts
     useEffect(() => {
         dispatch(getPokemons()); // Dispatch the action to fetch pokemons
@@ -37,6 +37,14 @@ const PokemonsScreen: React.FC<PokemonsScreenProps> = ({ navigation }) => {
         }
 
         return <PokemonCard title={itemData.item.name} url={itemData.item.url} onPress={pressHandler} />;
+    }
+
+    if (loading === LoadingTypes.loading) {
+        return <LoadingOverlay />;
+    }
+
+    if (error) {
+        return <ErrorOverlay message={error} />;
     }
 
     return (

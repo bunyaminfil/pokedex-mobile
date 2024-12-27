@@ -1,6 +1,7 @@
 export type InitStatePokemon = {
     pokemons: [];
     loading: number;
+    error: null | string;
 };
 export interface IPokemons {
     count: number;

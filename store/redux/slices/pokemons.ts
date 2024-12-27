@@ -7,6 +7,7 @@ import { IPokemons, InitStatePokemon } from "@/types/pokemonTypes";
 const initialState: InitStatePokemon = {
     pokemons: [],
     loading: LoadingTypes.init,
+    error: null,
 };
 export const getPokemons = createAsyncThunk("pokemons/getPokemons", async (_, { rejectWithValue }) => {
     try {
@@ -30,6 +31,7 @@ export const pokemonsSlice = createSlice({
         builder
             .addCase(getPokemons.pending, (state) => {
                 state.loading = LoadingTypes.loading;
+                state.error = null;
             })
             .addCase(getPokemons.fulfilled, (state, action) => {
                 state.loading = LoadingTypes.loaded;
@@ -37,6 +39,7 @@ export const pokemonsSlice = createSlice({
             })
             .addCase(getPokemons.rejected, (state, action) => {
                 state.loading = LoadingTypes.loaded;
+                state.error = action.payload as string;
             });
     },
 });
