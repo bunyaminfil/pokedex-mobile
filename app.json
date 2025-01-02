@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "pokedex-mobile",
-    "slug": "pokedex-mobile",
+    "name": "Pokedex Mobile",
+    "slug": "PokedexMobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/pokemon.jpg",
+    "icon": "./assets/pokemon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/pokemon.jpg",
+      "image": "./assets/pokemon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
