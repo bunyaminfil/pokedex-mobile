@@ -7,6 +7,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 
 import PokemonsScreen from "./screens/Pokemons";
+import GamesScreen from "./screens/GamesScreen";
+import MatchingCardGameScreen from "./screens/MatchingCardGameScreen";
 import PokemonDetailScreen from "./screens/PokemonDetail";
 // import FavoritesContextProvider from './store/context/favorites-context';
 import { store } from "./store/redux";
@@ -33,6 +35,14 @@ function DrawerNavigator() {
                 options={{
                     title: "All Pokemons",
                     drawerIcon: ({ color, size }) => <Ionicons name="list" color={color} size={size} />,
+                }}
+            />
+            <Drawer.Screen
+                name="Games"
+                component={GamesScreen}
+                options={{
+                    title: "Games",
+                    drawerIcon: ({ color, size }) => <Ionicons name="game-controller" color={color} size={size} />,
                 }}
             />
         </Drawer.Navigator>
@@ -65,6 +75,13 @@ export default function App() {
                             component={PokemonDetailScreen}
                             options={{
                                 title: "About the Pokemon",
+                            }}
+                        />
+                        <Stack.Screen
+                            name="MatchingCardGame"
+                            component={MatchingCardGameScreen}
+                            options={{
+                                title: "Matching Card Game",
                             }}
                         />
                     </Stack.Navigator>

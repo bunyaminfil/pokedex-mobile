@@ -26,7 +26,7 @@ const PokemonsScreen: React.FC<PokemonsScreenProps> = ({ navigation }) => {
     const { pokemons, loading, error } = useAppSelector((state: RootState) => state.pokemonsReducer);
     // Fetch pokemons when the component mounts
     useEffect(() => {
-        dispatch(getPokemons()); // Dispatch the action to fetch pokemons
+        dispatch(getPokemons(20)); // Dispatch the action to fetch pokemons
     }, [dispatch]);
 
     function renderPokemonItem(itemData: ListRenderItemInfo<IPokemon>) {

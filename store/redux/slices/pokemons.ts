@@ -9,9 +9,9 @@ const initialState: InitStatePokemon = {
     loading: LoadingTypes.init,
     error: null,
 };
-export const getPokemons = createAsyncThunk("pokemons/getPokemons", async (_, { rejectWithValue }) => {
+export const getPokemons = createAsyncThunk("pokemons/getPokemons", async (count: number, { rejectWithValue }) => {
     try {
-        const response: IPokemons = await axiosInstance.get(`pokemon`);
+        const response: IPokemons = await axiosInstance.get(`pokemon?limit=${count}`);
         const customPokemon = {
             name: "gamzius",
             url: "",
